@@ -1,0 +1,25 @@
+#Specify the version of docker-compose to use
+version: "3"
+services: 
+    web:
+    #use a Docker file in the current directory to create an image
+      build: 
+        context: .
+        dockerfile: Dockerfile.dev
+    #Correct port mapping
+      ports: 
+        - "3000:3000"
+      volumes: 
+      #Map the node module folder
+        - /usr/app/node_modules
+      #Map the current folder to the container /usr/app folder
+        - .:/usr/app
+#To run the test
+    test:
+      build: 
+        context: .
+        dockerfile: Dockerfile.dev
+      volumes: 
+        - /usr/app/node_modules
+        - .:/usr/app
+      command: ["npm", "run", "test"]

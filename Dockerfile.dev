@@ -1,0 +1,17 @@
+#Docker dev only use for dev
+#From baseimage
+FROM node:alpine
+
+#Specify the working directory
+WORKDIR  '/usr/app'
+
+#Install some dependencies
+COPY package.json .
+#Install npm
+RUN npm install
+
+#Copy the rest of the files to the working copy in the container
+COPY .  .
+
+#Run npm with the dev parameters
+CMD ["npm", "run", "start"]
