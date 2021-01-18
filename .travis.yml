@@ -1,0 +1,15 @@
+#the user should have the sudo rights to execute
+sudo: required
+services:
+  # We must have docker install
+  - docker
+
+
+before_install:
+  #Build the image using the Dockerfile.dev to execute the tests
+  - docker build -t fxfrancky/docker-react -f Dockerfile.dev .
+
+
+script:
+  #Run the tests --  --coverage to exit the command after test execution
+  - docker run fxfrancky/docker-react npm run test -- --coverage
