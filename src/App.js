@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-         We want to Learn React
+         We want to Learn React NOW in 2021.
         </a>
       </header>
     </div>

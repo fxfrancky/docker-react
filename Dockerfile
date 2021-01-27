@@ -16,12 +16,6 @@ RUN npm run build
 
 
 
-
-
-
-
-
-
 #RUN PHASE
 #Section for the Nginx server
 FROM nginx
