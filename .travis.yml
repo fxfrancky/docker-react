@@ -12,4 +12,6 @@ before_install:
 
 script:
   #Run the tests --  --coverage to exit the command after test executions
-  - docker run fxfrancky/docker-react npm run test -- --coverage
+  - docker run  -e CI=true  fxfrancky/docker-react npm run test
+
+  #  - docker run  -e CI=true  fxfrancky/docker-react npm run test -- --coverage
