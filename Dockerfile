@@ -7,14 +7,15 @@ FROM node:alpine as builder
 WORKDIR /app
 #Install some dependencies
 #COPY package.json .
-COPY package.json package-lock.json ./
+COPY package.json  .
 #Install npm
 #RUN npm install
 RUN npm install
 #Copy the remaining files
-COPY . ./
+COPY . .
 #Run npm with production parameter
-RUN npm run build
+#RUN npm run build
+RUN ["npm","run", "build"]
 
 #RUN PHASE
 #Section for the Nginx server
@@ -38,6 +39,7 @@ FROM nginx
 
 #EXPOSE 3000 80
 #ENTRYPOINT ["nginx", "-g", "daemon off;"]
-COPY --from=builder /app/build /usr/share/nginx/html
-COPY default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
+COPY --from=builder /app/build /usr/share/nginx/html
+#COPY default.conf /etc/nginx/conf.d/default.conf
+
