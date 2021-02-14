@@ -24,9 +24,9 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx/nginx.conf /etc/nginx/conf.d
 #Exposer ce port en production pour notre serveur
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
 # copy from "builder"
 #Copy config file
-#COPY --from=builder /app/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /builddir/nginx.conf /etc/nginx/conf.d/default.conf
 #Get files from container wokdir/build to ngnx working dir /usr/share/nginx/html
-#COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /builddir/build /usr/share/nginx/html
