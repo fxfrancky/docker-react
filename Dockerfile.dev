@@ -3,7 +3,7 @@
 FROM node:alpine
 
 #Specify the working directory
-WORKDIR  './app'
+WORKDIR  '/app'
 
 #Install some dependencies
 COPY package.json ./
