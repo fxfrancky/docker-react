@@ -18,7 +18,7 @@ script:
 # Configure travis deployment to AWS for production
 deploy:
   provider: elasticbeanstalk
-  region: us-east-2 
+  region: "us-east-2" 
   app: "docker-react"
   env: "Dockerreact-env"
   bucket_name: "elasticbeanstalk-us-east-2-143321073872"
