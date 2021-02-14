@@ -1,10 +1,6 @@
 #the user should have the sudo rights to execute
 sudo: required
 
-language: node_js
-node_js:
-    - "stable"
-
 services:
   # We must have docker install (travis will install a copy of docker)
   - docker
@@ -17,8 +13,7 @@ before_install:
 
 script:
   #Run the tests --  --coverage to exit the command after test executions
-  - docker run -e CI=true fxfrancky/docker-react npm run test -- --coverage
-
+  - docker run -e CI=true fxfrancky/docker-react npm run test 
   #  - docker run  -e CI=true  fxfrancky/docker-react npm run test -- --coverage
 # Configure travis deployment to AWS for production
 deploy:
