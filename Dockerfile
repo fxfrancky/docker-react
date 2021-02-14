@@ -10,9 +10,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 #Install npm
 #RUN npm install
-RUN npm install && mkdir /app && mv ./node_modules ./app
+RUN npm install
 #Copy the remaining files
-COPY . .
+COPY . ./
 #Run npm with production parameter
 RUN npm run build
 
@@ -39,6 +39,6 @@ FROM nginx
 #EXPOSE 3000 80
 #ENTRYPOINT ["nginx", "-g", "daemon off;"]
 COPY --from=builder /app/build /usr/share/nginx/html
-COPY --from=builder /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
-RUN ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
