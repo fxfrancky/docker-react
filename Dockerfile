@@ -3,7 +3,7 @@
 FROM node:alpine as builder
 
 #Specify the working DIRECTORY
-WORKDIR '/usr/app'
+WORKDIR /app
 #Install some dependencies
 COPY package*.json ./
 #Install npm
@@ -23,4 +23,4 @@ FROM nginx
 EXPOSE 80
 # copy from "builder"
 #Get files from container wokdir/build to ngnx working dir /usr/share/nginx/html
-COPY --from=builder /usr/app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
