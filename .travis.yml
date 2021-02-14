@@ -1,6 +1,10 @@
 #the user should have the sudo rights to execute
 sudo: required
 
+language: node_js
+node_js:
+    - "stable"
+
 services:
   # We must have docker install (travis will install a copy of docker)
   - docker
