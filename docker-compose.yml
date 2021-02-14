@@ -11,15 +11,15 @@ services:
         - "3000:3000"
       volumes: 
       #Map the node module folder
-        - /usr/app/node_modules
+        - /app/node_modules
       #Map the current folder to the container /usr/app folder
-        - .:/usr/app
+        - .:/app
 #To run the test
     test:
       build: 
         context: .
         dockerfile: Dockerfile.dev
       volumes: 
-        - /usr/app/node_modules
-        - .:/usr/app
+        - /app/node_modules
+        - .:/app
       command: ["npm", "run", "test"]

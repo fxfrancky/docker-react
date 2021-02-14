@@ -3,15 +3,15 @@
 FROM node:alpine
 
 #Specify the working directory
-WORKDIR  /usr/app
+WORKDIR  './app'
 
 #Install some dependencies
-COPY package.json .
+COPY package.json ./
 #Install npm
 RUN npm install
 
 #Copy the rest of the files to the working copy in the container
-COPY .  .
+COPY ./  ./
 
 #Run npm with the dev parameters
 CMD ["npm", "run", "start"]
