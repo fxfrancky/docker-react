@@ -20,7 +20,7 @@ RUN npm run build
 #Section for the Nginx server
 FROM nginx
 #Exposer ce port en production pour notre serveur
-EXPOSE 80
+EXPOSE 81
 # copy from "builder"
 #Get files from container wokdir/build to ngnx working dir /usr/share/nginx/html
 COPY --from=builder /app/build /usr/share/nginx/html
