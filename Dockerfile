@@ -20,9 +20,9 @@ RUN npm run build
 #Section for the Nginx server
 FROM nginx
 
-COPY nginx.conf /etc/nginx/nginx.conf
+#COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN rm -rf /usr/share/nginx/html/*
+#RUN rm -rf /usr/share/nginx/html/*
 #COPY --from=builder /builddir/build /usr/share/nginx/html
 #RUN rm /etc/nginx/conf.d/default.conf
 #COPY nginx/nginx.conf /etc/nginx/conf.d
@@ -34,7 +34,11 @@ RUN rm -rf /usr/share/nginx/html/*
 #COPY --from=builder /builddir/nginx.conf /etc/nginx/conf.d/default.conf
 #Get files from container wokdir/build to ngnx working dir /usr/share/nginx/html
 #COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/build /usr/share/nginx/html
+#COPY --from=builder /app/build /usr/share/nginx/html
 
-EXPOSE 3000 80
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+#EXPOSE 3000 80
+#ENTRYPOINT ["nginx", "-g", "daemon off;"]
+COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
