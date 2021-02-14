@@ -1,10 +1,6 @@
 #the user should have the sudo rights to execute
 sudo: required
 
-language: node_js
-node_js:
-    - "stable"
-
 services:
   # We must have docker install (travis will install a copy of docker)
   - docker
@@ -31,7 +27,7 @@ deploy:
   on:
     branch: master
   access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key:
-        secure: "$AWS_SECRET_KEY"
+  #secret_access_key:
+  #      secure: "$AWS_SECRET_KEY"
 
-  #secret_access_key: "$AWS_SECRET_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
