@@ -5,7 +5,7 @@ FROM node:alpine as builder
 #Specify the working DIRECTORY
 WORKDIR '/usr/app'
 #Install some dependencies
-COPY package.json .
+COPY package*.json ./
 #Install npm
 RUN npm install
 #Copy the remaining files
